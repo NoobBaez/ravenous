@@ -19,14 +19,33 @@ const businnes = {
 
 const businesses = Array(6).fill(businnes);
 
-function App() {
-  return (
-    <div className="App">
-      <h1>ravenous</h1>
-      <Search />
-      <BusinessList businesses={businesses} />
-    </div>
-  );
+// function App() {
+//   return (
+//     <div className="App">
+//       <h1>ravenous</h1>
+//       <Search searchYelp={searchYelp} />
+//       <BusinessList businesses={businesses} />
+//     </div>
+//   );
+// }
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.searchYelp = this.searchYelp.bind(this);
+  }
+
+  searchYelp(term, location, sortBy) { console.log(`Searching Yelp with ${term}, ${location}, ${sortBy}`) }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>ravenous</h1>
+        <Search searchYelp={this.searchYelp} />
+        <BusinessList businesses={businesses} />
+      </div>
+    );
+  }
 }
 
 export default App;
